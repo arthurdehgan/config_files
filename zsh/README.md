@@ -39,4 +39,9 @@ version is 4.3.11.
      chsh -s /bin/zsh
      ```
 
-  5. Open a new Zsh terminal window or tab.
+  5. copy zshrc file in the home folder
+
+     ```console
+     cp .zshrc ~/
+     ```
+
