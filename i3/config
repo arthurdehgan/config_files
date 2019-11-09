@@ -1,3 +1,22 @@
+# Setup specific options:
+
+# Autostart applications
+exec i3-msg 'workspace 1; exec firefox'
+exec i3-msg 'workspace 3; exec slack'
+exec i3-msg 'workspace 6; exec thunderbird'
+exec i3-msg 'workspace 7; exec anydesk'
+exec --no-startup-id ~/.pyvenvs/ml/bin/jupyter lab --no-browser --port=8889
+
+# Associate workspace to screens
+workspace 1 output DP-7
+workspace 2 output DP-7
+workspace 3 output DP-7
+workspace 4 output DP-7
+workspace 5 output DP-5
+workspace 6 output DP-5
+workspace 7 output DP-5
+workspace 8 output DP-5
+
 # i3 config file (v4)
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
@@ -57,9 +76,9 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 
 # Start Applications
 bindsym $mod+F2 exec firefox
-bindsym $mod+F3 workspace 4; exec thunderbird; workspace back_and_forth
+bindsym $mod+F3 workspace 6; exec thunderbird; workspace back_and_forth
 bindsym Ctrl+space exec rofi -show run
-bindsym $sup+e exec vifm
+bindsym $sup+e exec pcmanfm
 bindsym $mod+Shift+F3 exec gksu pcmanfm
 bindsym $mod+t exec --no-startup-id pkill compton
 bindsym $mod+Ctrl+t exec --no-startup-id compton -b
@@ -185,10 +204,8 @@ bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 
 # Open applications on specific workspaces
-# assign [class="Thunderbird"] $ws4
 # assign [class="Pale moon"] $ws2
 # assign [class="Pcmanfm"] $ws3
-assign [class="Skype"] $ws3
 
 # Open specific applications in floating mode
 for_window [title="alsamixer"] floating enable border pixel 1
@@ -275,9 +292,9 @@ mode "resize" {
 bindsym $mod+9 exec --no-startup-id blurlock
 
 # Change keyboard layout
-exec "setxkbmap -option 'grp:alt_shift_toggle' -layout us,us -variant intl"
+exec --no-startup-id "setxkbmap -option 'grp:win_space_toggle' -layout us,us -variant basic,intl"
 
-# Autostart applications
+# Default
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 #exec --no-startup-id manjaro-hello
@@ -287,9 +304,15 @@ exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 # exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
+
+# Lock screen
 exec --no-startup-id start_conky_maia
-# exec --no-startup-id start_conky_green
-exec --no-startup-id xautolock -time 10 -locker blurlock
+xidlehook --not-when-audio \
+--timer 'normal' 120 'xrandr --output "DVI-D-1" --brightness .3 --output "DP-1" --brightness .3' \
+'xrandr --output "DP-1" --brightness 1 --output "DP-1" --brightness 1' \
+--timer 'normal' 15 'xrandr --output "DP-1" --brightness 1 --output "DP-1" --brightness 1; i3lock -f -t -i $HOME/.i3/wallpaper.png' '' \
+--timer 'normal' 3600 'systemctl suspend' ''
+
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
