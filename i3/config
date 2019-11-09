@@ -304,10 +304,10 @@ exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 # exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
+exec --no-startup-id start_conky_maia
 
 # Lock screen
-exec --no-startup-id start_conky_maia
-xidlehook --not-when-audio \
+exec --no-startup-id xidlehook --not-when-audio \
 --timer 'normal' 120 'xrandr --output "DVI-D-1" --brightness .3 --output "DP-1" --brightness .3' \
 'xrandr --output "DP-1" --brightness 1 --output "DP-1" --brightness 1' \
 --timer 'normal' 15 'xrandr --output "DP-1" --brightness 1 --output "DP-1" --brightness 1; i3lock -f -t -i $HOME/.i3/wallpaper.png' '' \
