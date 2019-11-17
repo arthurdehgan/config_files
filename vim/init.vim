@@ -32,6 +32,7 @@ Plug 'ambv/black'
 Plug 'SirVer/ultisnips'
 Plug 'xuhdev/vim-latex-live-preview'
 Plug 'lervag/vimtex'
+Plug 'heavenshell/vim-pydocstring'
 
 " All of your Plugins must be added before the following line
 call plug#end()
