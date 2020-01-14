@@ -14,7 +14,6 @@ fi
 export PATH=$PATH:/home/arthur/.local/bin
 export LANG=en_US.UTF-8
 alias maj="sudo pacman -Syu"
-alias ml='source /home/arthur/.pyvenvs/ml/bin/activate'
 export WORK="arthur@work_address"
 export GUILLIMIN="kikuko@guillimin.hpc.mcgill.ca"
 alias work="ssh $WORK"
@@ -47,3 +46,8 @@ function rsync_wrap {
 			  }
 export MP2="kikuko@mp2b.calculquebec.ca"
 alias mp2="ssh $MP2"
+
+# For pyenv to work
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
