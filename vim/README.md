@@ -10,4 +10,3 @@ INSTRUCTIONS:
  - install flake8 (pip install flake8)
  - copy flake8 in $HOME/.config/
  - copy config files for pydocstring
- - ```.config/nvim/plugged/vim-pydocstring/test/templates/numpy/* .config/nvim/plugged/vim-pydocstring/template/pydocstring/```
