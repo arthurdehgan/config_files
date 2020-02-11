@@ -45,9 +45,9 @@ version is 4.3.11.
      cp .zshrc ~/
      ```
 
-  6. activate and run follow instruction for powerline10k theme
+  6. copy powerlevel10k settings
 
     ```console
-    prompt powerlevel10k
+    cp .p10k.zsh $HOME/
     ```
 
