@@ -7,13 +7,15 @@ follow these steps to configure i3
 
      ```console
      conf=$HOME/.i3/config
-     cp $conf $conf.backup
+     mv $conf $conf.backup
      ```
 
   2. Remove the current lock screen settings
 
      ```console
-     sed '/^# Lock/,/^\s*$/d' $conf
+     sed '/^# Lock/,/^\s*$/d' $conf.backup > $conf.temp
+     sed '/blurlock/d' $conf.temp > $conf
+     rm $conf.temp
      ```
 
   3. Get the names of your monitors and set them in i3 config:
@@ -25,7 +27,7 @@ follow these steps to configure i3
      For each monitor write:
 
      ```console
-     printf "set $monitorX display_name"
+     printf "\nset \$monitorX display_name\n"
      ```
 
      X being the display number.
@@ -40,7 +42,7 @@ follow these steps to configure i3
 
      ```console
      yay xidlehook
-     printf "\n# Lock screen\nexec_always --no-startup-id xidlehook --not-when-audio --not-when-fullscreen\\n--timer 120 'xrandr --output '\$monitor1' --brightness .3 --output '\$monitor2' --brightness .3'\\n'xrandr --output '\$monitor1' --brightness 1 --output '\$monitor2' --brightness 1'\\n--timer 15 'blurlock' 'xrandr --output '\$monitor1' --brightness 1 --output '\$monitor2' --brightness 1'\\n--timer 3600 'systemctl suspend' 'xrandr --output '\$monitor1' --brightness 1 --output '\$monitor2' --brightness 1'\n" >> $conf
+     printf "\n# Lock screen\nexec_always --no-startup-id xidlehook --not-when-audio --not-when-fullscreen\ \n--timer 120 'xrandr --output '\$monitor1' --brightness .3 --output '\$monitor2' --brightness .3'\ \n'xrandr --output '\$monitor1' --brightness 1 --output '\$monitor2' --brightness 1'\ \n--timer 15 'blurlock' 'xrandr --output '\$monitor1' --brightness 1 --output '\$monitor2' --brightness 1'\ \n--timer 3600 'systemctl suspend' 'xrandr --output '\$monitor1' --brightness 1 --output '\$monitor2' --brightness 1'\n" >> $conf
      ```
 
      Note: This is an example for a 2-monitors setup, adapt it to your needs. Also, test if
