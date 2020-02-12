@@ -45,9 +45,11 @@ version is 4.3.11.
      cp .zshrc ~/
      ```
 
-  6. copy powerlevel10k settings
+  6. copy powerlevel10k settings and add to .zshrc the config for powerlevel10k to run:
 
-    ```console
-    cp .p10k.zsh $HOME/
-    ```
+     ```console
+     cp .p10k.zsh $HOME/
+     sed -i "1i# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.\n# Initialization code that may require console input (password prompts, [y/n]\n# confirmations, etc.) must go above this block, everything else may go below.\nif [[ -r '${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh' ]]; then\nsource '${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh'\nfi\n" $HOME/.zshrc
+     printf "\nprompt powerlevel10k\n\n# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.\n[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh" >> $HOME/.zshrc
+     ```
 

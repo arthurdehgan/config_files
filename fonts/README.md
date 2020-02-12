@@ -1,10 +1,9 @@
 Installation
 ------------
 
-Prezto will work with any recent release of Zsh, but the minimum required
-version is 4.3.11.
+Adding this font will ensure powerlevel10k for zprezto works optimally.
 
-  1. put the fonts in .fonts folder in $HOME:
+  1. Put the fonts in .fonts folder in $HOME:
 
      ```console
      cp *.ttf $HOME/.fonts/

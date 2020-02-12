@@ -1,10 +1,3 @@
-#
-# Executes commands at the start of an interactive session.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
-
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
@@ -13,12 +6,6 @@ fi
 # Customize to your needs...
 export PATH=$PATH:/home/arthur/.local/bin
 export LANG=en_US.UTF-8
-alias maj="sudo pacman -Syu"
-export WORK="arthur@work_address"
-export GUILLIMIN="kikuko@guillimin.hpc.mcgill.ca"
-alias work="ssh $WORK"
-alias workX="ssh -X $WORK"
-alias guillimin="ssh $GUILLIMIN"
 alias vi="/usr/bin/vim"
 alias vim="nvim"
 
@@ -46,6 +33,13 @@ function rsync_wrap {
 			  }
 export MP2="kikuko@mp2b.calculquebec.ca"
 alias mp2="ssh $MP2"
+export GRAHAM="kikuko@graham.computecanada.ca"
+alias graham="ssh $GRAHAM"
+export WORK="arthur@work_address"
+export GUILLIMIN="kikuko@guillimin.hpc.mcgill.ca"
+alias guillimin="ssh $GUILLIMIN"
+alias work="ssh $WORK"
+alias workX="ssh -X $WORK"
 
 # For pyenv to work
 export PYENV_ROOT="$HOME/.pyenv"
