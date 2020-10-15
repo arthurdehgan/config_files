@@ -27,7 +27,7 @@ follow these steps to configure i3
      For each monitor write:
 
      ```console
-     printf "\nset \$monitorX display_name\n"
+     printf "\nset \$monitorX display_name\n" >> $conf
      ```
 
      X being the display number.
@@ -50,7 +50,7 @@ follow these steps to configure i3
      --not-when-fullscreen flag. To test, try running:
 
      ```console
-     xidlehook --not-when-audio --not-when-fullscreen --timer 1 '--xrandr --output $m --brightness .3' '--xrandr --output $m --brightness 1'
+     xidlehook --not-when-audio --not-when-fullscreen --timer 1 'xrandr --output $m --brightness .3' 'xrandr --output $m --brightness 1'
      ```
 
   5. (Optional) You can associate workspace to specific screens:
