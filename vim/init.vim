@@ -28,10 +28,10 @@ Plug 'vim-airline/vim-airline'
 Plug 'Valloric/YouCompleteMe'
 Plug 'w0rp/ale'
 Plug 'nvie/vim-flake8'
-Plug 'ambv/black'
+Plug 'psf/black'
 Plug 'SirVer/ultisnips'
-Plug 'xuhdev/vim-latex-live-preview'
-Plug 'lervag/vimtex'
+" Plug 'xuhdev/vim-latex-live-preview'
+" Plug 'lervag/vimtex'
 Plug 'heavenshell/vim-pydocstring'
 
 " All of your Plugins must be added before the following line
