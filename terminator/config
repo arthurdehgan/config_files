@@ -1,23 +1,33 @@
 [global_config]
 [keybindings]
+  go_up = <Alt>k
   go_down = <Alt>j
   go_left = <Alt>h
   go_right = <Alt>l
-  go_up = <Alt>k
-  layout_launcher = <Primary><Alt>o
-  rotate_ccw = <Primary><Shift><Alt>r
   rotate_cw = <Primary><Alt>r
-[layouts]
-  [[default]]
-[plugins]
+  rotate_ccw = <Primary><Shift><Alt>r
+  layout_launcher = <Primary><Alt>o
 [profiles]
   [[default]]
-    background_color = "#282828"
-    cursor_color = "#7c6f64"
-    custom_command = zsh
-    font = Sans 12
-    foreground_color = "#ebdbb2"
-    palette = "#282828:#cc241d:#98971a:#d79921:#458588:#b16286:#689d6a:#a89984:#928374:#fb4934:#b8bb26:#fabd2f:#83a598:#d3869b:#8ec07c:#ebdbb2"
-    scrollbar_position = hidden
+    background_color = "#222222"
+    cursor_fg_color = "#222222"
+    cursor_bg_color = "#525053"
+    cursor_color_default = False
+    font = MesloLGS NF 11
+    foreground_color = "#fbf8ff"
     show_titlebar = False
+    scrollbar_position = hidden
+    palette = "#222222:#fc618d:#7bd88f:#fce566:#fd9353:#948ae3:#5ad4e6:#fbf8ff:#525053:#fc618d:#7bd88f:#fce566:#fd9353:#948ae3:#5ad4e6:#fbf8ff"
     use_custom_command = True
+    custom_command = zsh
+    use_system_font = False
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+      profile = default
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]

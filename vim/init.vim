@@ -19,20 +19,23 @@ nnoremap M O<Esc>j
 nnoremap H _
 nnoremap L $
 
+set updatetime=300
+
 call plug#begin()
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 Plug 'vim-scripts/indentpython.vim'
-Plug 'morhetz/gruvbox'
-Plug 'vim-airline/vim-airline'
-Plug 'Valloric/YouCompleteMe'
+Plug 'loctvl842/monokai-pro.nvim'
 Plug 'w0rp/ale'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvie/vim-flake8'
 Plug 'psf/black'
 Plug 'SirVer/ultisnips'
+Plug 'itchyny/lightline.vim'
+Plug 'lukas-reineke/indent-blankline.nvim'
 " Plug 'xuhdev/vim-latex-live-preview'
 " Plug 'lervag/vimtex'
-Plug 'heavenshell/vim-pydocstring'
+Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -41,10 +44,9 @@ call plug#end()
 autocmd Filetype tex setl updatetime=1
 let g:livepreview_previewer = 'okular'
 
-" Autocompletion parameters
-let g:ycm_autoclose_preview_window_after_completion=1
-let g:ycm_python_binary_path = 'python'
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" pydocstring config
+let g:pydocstring_doq_path =  '/home/arthur/.pyenv/shims/doq'
+let g:pydocstring_formatter = 'numpy'
 
 " Autodelete trailing space
 autocmd BufWritePre * %s/\s\+$//e
@@ -72,16 +74,31 @@ au BufNewFile,BufRead *.py;
 let python_highlight_all=1
 syntax on
 set background=dark
-colorscheme gruvbox
+
+" Monokai Pro config
+colorscheme monokai-pro
+let g:lightline = {
+    \ 'colorscheme': 'monokaipro',
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+    \ },
+    \ 'component_function': {
+    \   'cocstatus': 'coc#status'
+    \ },
+    \ }
+
+" Use autocmd to force lightline update.
+autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+luafile /home/arthur/.config/nvim/monokai.lua
 
 " Whitespace marking
 highlight BadWhitespace ctermbg=red guibg=darkred
 au BufRead,BufNewFile *.py,*.tex match BadWhitespace /\s\+$/
 
 " Remaps
-noremap <F2> :lnext<CR>
-noremap <C-F2> :lprevious<CR>
 noremap <F4> :set hlsearch! hlsearch?<CR>
+nmap <silent> <F8> <Plug>(pydocstring)
 autocmd FileType python nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
 autocmd FileType tex nnoremap <buffer> <F9> :LLPStartPreview<cr>
 inoremap jk <Esc>
@@ -92,6 +109,48 @@ nnoremap <C-k> <C-w><C-k>
 nnoremap <C-l> <C-w><C-l>
 set splitbelow
 set splitright
+
+" cov Vim autocomplete remaps
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" Use F2 and C-F2 to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
+nmap <silent> <F2> <Plug>(coc-diagnostic-prev)
+nmap <silent> <C-F2> <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call ShowDocumentation()<CR>
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
 
 " Config for F9
 augroup SPACEVIM_ASYNCRUN
@@ -104,3 +163,4 @@ augroup END
 set foldmethod=indent
 set foldlevel=99
 nnoremap <space> za
+let g:python3_host_prog = '/home/arthur/.pyenv/versions/nvim/bin/python'
