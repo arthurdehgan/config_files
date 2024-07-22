@@ -1,0 +1,129 @@
+
+version = 2
+final_space = true
+
+[[blocks]]
+type = 'prompt'
+alignment = 'left'
+newline = true
+
+[[blocks.segments]]
+type = 'path'
+style = 'plain'
+template = '<#98bfad>{{ .Path }}</> ❯'
+background = 'transparent'
+foreground = '#7eb8da'
+
+[blocks.segments.properties]
+style = 'short'
+
+[[blocks.segments]]
+type = 'git'
+style = 'plain'
+template = ' <#5e81ac></>{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}<#8fbcbb> ●</>{{ end }}{{ if .Staging.Changed }}<#88c0d0> ● </>{{ end }}<#5e81ac></> <#7eb8da>❯</>'
+background = 'transparent'
+foreground = '#ffa5d8'
+
+[blocks.segments.properties]
+fetch_stash_count = true
+fetch_status = true
+fetch_upstream_icon = true
+branch_icon = ''
+
+[[blocks.segments]]
+type = 'aws'
+style = 'plain'
+template = '[{{ .Profile }}{{if .Region}}@{{ .Region }}{{ end }}]'
+background = 'transparent'
+foreground = '#ffa5d8'
+
+[[blocks.segments]]
+type = 'kubectl'
+style = 'plain'
+template = '[{{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}}]'
+background = 'transparent'
+foreground = '#ffa5d8'
+
+[[blocks.segments]]
+type = 'root'
+style = 'plain'
+template = '[]'
+background = 'transparent'
+foreground = '#ffa5d8'
+
+[[blocks.segments]]
+type = 'status'
+style = 'powerline'
+template = ' <#ffffff></> Command Failed'
+background = 'transparent'
+foreground = '#ffa5d8'
+
+[[blocks]]
+type = 'prompt'
+alignment = 'right'
+
+[[blocks.segments]]
+type = 'node'
+style = 'diamond'
+leading_diamond = ''
+trailing_diamond = ''
+template = ' {{ .Full }} '
+background = '#6CA35E'
+foreground = '#ffffff'
+
+[[blocks.segments]]
+type = 'java'
+style = 'diamond'
+leading_diamond = ' '
+trailing_diamond = ''
+template = ' {{ .Full }} '
+background = '#4c1f5e'
+foreground = '#ffffff'
+
+[[blocks.segments]]
+type = 'status'
+style = 'plain'
+template = ' {{ if gt .Code 0 }}<#ff0000></>{{ else }}<#23d18b></>{{ end }} '
+background = 'transparent'
+foreground = ''
+
+[blocks.segments.properties]
+always_enabled = true
+
+[[blocks.segments]]
+type = 'executiontime'
+style = 'plain'
+template = 'took  {{ .FormattedMs }} '
+background = 'transparent'
+foreground = '#be9ddf'
+
+[blocks.segments.properties]
+threshold = 500
+
+[[blocks.segments]]
+type = 'time'
+style = 'plain'
+template = ' {{ .CurrentDate | date .Format }}  '
+background = 'transparent'
+foreground = '#7eb8da'
+
+[blocks.segments.properties]
+time_format = '15:04:05'
+
+
+[[blocks]]
+type = 'prompt'
+alignment = 'left'
+newline = true
+
+[[blocks.segments]]
+type = 'shell'
+style = 'plain'
+template = '❯'
+foreground = '#7eb8da'
+background = 'transparent'
+
+[transient_prompt]
+foreground = '#7eb8da'
+background = 'transparent'
+template = '❯ '

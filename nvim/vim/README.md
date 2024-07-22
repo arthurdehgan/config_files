@@ -1,0 +1,12 @@
+INSTRUCTIONS:
+ - Copy init.vim in .config/nvim/ for neovim or in $HOME as .vimrc
+ - Install neovim for python (pip install neovim for each environment?)
+ - ```curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim```
+ - Execute command :PlugInstall in vim/neovim
+ - Install manually YouCompleteMe by going in its folder in .vim/plugged/YouCompleteMe or .config/nvim/plugged/YouCompleteMe and executing ./install.py
+ - install black (pip install black) for formating (see ambv/black)
+ - install pylint (pip install pylint) for each environment
+ - copy .pylintrc in the $HOME directory
+ - install flake8 (pip install flake8)
+ - copy flake8 in $HOME/.config/
+ - copy config files for pydocstring
