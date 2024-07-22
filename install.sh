@@ -12,9 +12,14 @@ $INSTALL neovim
 $INSTALL ssh
 $INSTALL rsync
 
-OMP='$HOME/.config/ohmyposh'
-FONTS='$HOME/.local/share/fonts'
-NVIM='$HOME/.config/nvim'
+OMP=$HOME'/.config/ohmyposh'
+FONTS=$HOME'/.local/share/fonts'
+NVIM=$HOME'/.config/nvim'
+
+FILE=$NVIM'/init.vim'
+if test -f "$FILE"; then
+    mv $FILE $NVIM/'init.vim.bak'
+fi
 
 mkdir -p $NVIM
 mkdir -p $OMP
