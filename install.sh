@@ -26,3 +26,5 @@ cp ohmyposh/config.toml $OMP/
 cp nvim/init.lua $NVIM/
 cp fonts/*.otf $FONTS/
 cp tmux/.tmux.conf $HOME/
+
+echo All done !
