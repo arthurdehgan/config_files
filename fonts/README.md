@@ -1,10 +1,12 @@
 Installation
 ------------
 
-Adding this font will ensure powerlevel10k for zprezto works optimally.
+Adding this font will ensure all apps will work properly
 
-  1. Put the fonts in .fonts folder in $HOME:
+  1. Put the fonts in .local/share/fonts folder in $HOME:
 
-     ```console
-     cp *.ttf $HOME/.fonts/
+     ```bash
+     cp *.otf ~/.local/share/fonts
      ```
+
+Source files come from https://github.com/shaunsingh/SFMono-Nerd-Font-Ligaturized.git 
