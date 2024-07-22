@@ -12,6 +12,8 @@ $INSTALL neovim
 $INSTALL ssh
 $INSTALL rsync
 
+curl -s https://ohmyposh.dev/install.sh | bash -s
+
 OMP=$HOME'/.config/ohmyposh'
 FONTS=$HOME'/.local/share/fonts'
 NVIM=$HOME'/.config/nvim'
