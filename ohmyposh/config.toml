@@ -8,9 +8,16 @@ alignment = 'left'
 newline = true
 
 [[blocks.segments]]
+type = "session"
+style = "plain"
+foreground = "#7eb8da"
+background = "transparent"
+template = "{{ if .SSHSession }}  {{ end }}{{ .UserName }}@{{ .HostName }} ❯"
+
+[[blocks.segments]]
 type = 'path'
 style = 'plain'
-template = '<#98bfad>{{ .Path }}</> ❯'
+template = ' <#98bfad>{{ .Path }}</> ❯'
 background = 'transparent'
 foreground = '#7eb8da'
 
