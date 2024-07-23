@@ -1,4 +1,4 @@
-source $HOME/.zprofile
+source .zprofile
 
 # ---- oh-my-posh ----
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/config.toml)"
@@ -7,26 +7,27 @@ eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/config.toml)"
 eval "$(zoxide init zsh)"
 
 # ---- FZF -----
-eval "$(fzf --zsh)"
+# eval "$(fzf --zsh)"
 
-export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+export FZF_DEFAULT_COMMAND="fdfind --hidden --strip-cwd-prefix --exclude .git"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+export FZF_ALT_C_COMMAND="fdfind --type=d --hidden --strip-cwd-prefix --exclude .git"
 
 # Use fd (https://github.com/sharkdp/fd) for listing path candidates.
 # - The first argument to the function ($1) is the base path to start traversal
 # - See the source code (completion.{bash,zsh}) for the details.
 _fzf_compgen_path() {
-  fd --hidden --exclude .git . "$1"
+  fdfind --hidden --exclude .git . "$1"
 }
 
 # Use fd to generate the list for directory completion
 _fzf_compgen_dir() {
-  fd --type=d --hidden --exclude .git . "$1"
+  fdfind --type=d --hidden --exclude .git . "$1"
 }
 
 # eza bat fzf integration
-# show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
+show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
 
 export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
@@ -64,6 +65,7 @@ export PATH=$PATH:$HOME/.local/bin
 
 # ---- aliases ----
 alias cat="bat"
+alias ll="eza --color=always --long --git --no-filesize --icons=always --no-user --no-permissions"
 alias ls="eza --color=always --grid --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
 alias cd="z"
 alias vi="/usr/bin/vim"
