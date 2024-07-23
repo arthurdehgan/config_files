@@ -8,18 +8,26 @@ alignment = 'left'
 newline = true
 
 [[blocks.segments]]
+type = "python"
+style = "plain"
+foreground = "#41a6b5"
+background = "transparent"
+display_default = false
+template = "{{ if .Venv }}  {{ .Venv }}{{ end }} ❯ "
+
+[[blocks.segments]]
 type = "session"
 style = "plain"
 foreground = "#7eb8da"
 background = "transparent"
-template = "{{ if .SSHSession }}  {{ end }}{{ .UserName }}@{{ .HostName }} ❯"
+template = "{{ if .SSHSession }}  {{ .UserName }}@{{ .HostName }} ❯{{ end }} "
 
 [[blocks.segments]]
 type = 'path'
 style = 'plain'
-template = ' <#98bfad>{{ .Path }}</> ❯'
+template = '{{ .Path }} ❯ '
 background = 'transparent'
-foreground = '#7eb8da'
+foreground = '#98bfad'
 
 [blocks.segments.properties]
 style = 'short'
@@ -27,7 +35,7 @@ style = 'short'
 [[blocks.segments]]
 type = 'git'
 style = 'plain'
-template = ' <#5e81ac></>{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}<#8fbcbb> ●</>{{ end }}{{ if .Staging.Changed }}<#88c0d0> ● </>{{ end }}<#5e81ac></> <#7eb8da>❯</>'
+template = '{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}<#8fbcbb> ●</>{{ end }}{{ if .Staging.Changed }}<#88c0d0> ● </>{{ end }}<#5e81ac></> ❯'
 background = 'transparent'
 foreground = '#ffa5d8'
 
