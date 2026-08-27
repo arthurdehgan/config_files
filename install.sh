@@ -18,11 +18,6 @@ OMP=$HOME'/.config/ohmyposh'
 FONTS=$HOME'/.local/share/fonts'
 NVIM=$HOME'/.config/nvim'
 
-FILE=$NVIM'/init.vim'
-if test -f "$FILE"; then
-    mv $FILE $NVIM/'init.vim.bak'
-fi
-
 mkdir -p $NVIM
 mkdir -p $OMP
 mkdir -p $FONTS
@@ -30,8 +25,10 @@ mkdir -p $FONTS
 cp wezterm/.wezterm.lua $HOME/
 cp zsh/.zshrc $HOME/
 cp ohmyposh/config.toml $OMP/
-cp nvim/init.lua $NVIM/
+cp -r nvim/. $NVIM/
 cp fonts/*.otf $FONTS/
 cp tmux/.tmux.conf $HOME/
+
+fc-cache -f $FONTS/
 
 echo All done !
