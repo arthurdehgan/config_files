@@ -86,7 +86,9 @@
     "external_directory": {
       "*": "ask",
       "/var/folders/w6/26g5mtqs2vxf3rnhc2hdq22c0000gn/T/kilo/*": "allow",
-      "/private/var/folders/w6/26g5mtqs2vxf3rnhc2hdq22c0000gn/T/kilo/*": "allow"
+      "/private/var/folders/w6/26g5mtqs2vxf3rnhc2hdq22c0000gn/T/kilo/*": "allow",
+      "C:/Users/Arthur/AppData/Local/Temp/kilo/*": "allow",
+      "C:/Users/Arthur/AppData/Local/Temp/kilo/**": "allow"
     },
     "question": "allow",
     "webfetch": "allow",

@@ -48,6 +48,6 @@ Afterwards, some components need manual setup:
 
 - **Oh My Posh / zsh**: start a new shell (`zsh` or re-login); oh-my-posh needs its init line in `.zshrc` (already included by the copied `.zshrc`).
 - **Neovim**: run `nvim` once — plugins and language servers install automatically on first launch, then run `:checkhealth`. Details in `nvim/README.md`.
-- **Kilo**: run `./kilo/install.sh` to copy the config to `~/.config/kilo/`. Details in `kilo/README.md`.
+- **Kilo**: run `./kilo/install.sh` (macOS/Linux) or `.\kilo\install.ps1` (Windows) to copy the config to `~/.config/kilo/`. Details in `kilo/README.md`.
 
 Or install everything one by one, starting with fonts, then ohmyposh, zshrc and the rest.
