@@ -6,6 +6,7 @@ Personal dotfiles and configuration files: shell, editor, terminal and AI coding
 
 ```
 fonts/        Nerd Fonts (Liga SFMono Nerd Font)
+kilo/         Kilo config (global kilo.jsonc + instructions, see kilo/README.md)
 nvim/         Neovim config (lazy.nvim, see nvim/README.md)
 ohmyposh/     Oh My Posh prompt config
 tmux/         tmux config
@@ -47,5 +48,6 @@ Afterwards, some components need manual setup:
 
 - **Oh My Posh / zsh**: start a new shell (`zsh` or re-login); oh-my-posh needs its init line in `.zshrc` (already included by the copied `.zshrc`).
 - **Neovim**: run `nvim` once — plugins and language servers install automatically on first launch, then run `:checkhealth`. Details in `nvim/README.md`.
+- **Kilo**: run `./kilo/install.sh` to copy the config to `~/.config/kilo/`. Details in `kilo/README.md`.
 
 Or install everything one by one, starting with fonts, then ohmyposh, zshrc and the rest.
